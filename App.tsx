@@ -13,11 +13,6 @@ import { ClassesProvider } from './src/context/ClassesContext';
 const Stack = createStackNavigator();
 
 export default function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? '#202024' : '#ffffff',
-  };
 
     return (
       <ClassesProvider>

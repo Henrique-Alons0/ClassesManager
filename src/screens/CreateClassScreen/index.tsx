@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, useColorScheme, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TextInput, StyleSheet, useColorScheme, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ClassesContext from '../../context/ClassesContext';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -30,15 +30,16 @@ export function CreateClassScreen() {
   return (
     <View style={[styles.container, backgroundStyle]}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.headerButton} onPress={() => navigation.goBack()}>
           <Text style={styles.icon}>←</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.logoContainer} onPress={() => navigation.goBack()}>
           <Image source={logoImage} style={styles.logo} />
         </TouchableOpacity>
         <Text style={styles.icon}></Text>
       </View>
       <View style={styles.content}>
+        <Icon style={styles.iconGroup} name="groups" size={60} color="#000" />
         <Text style={styles.title}>Nova Turma</Text>
         <Text style={styles.subtitle}>Crie uma turma para adicionar pessoas</Text>
         <TextInput
@@ -48,7 +49,6 @@ export function CreateClassScreen() {
           value={className}
           onChangeText={setClassName}
         />
-        {/* <Button title="Criar" color="#00875f" onPress={handleCreateClass} /> */}
         <TouchableOpacity
           style={styles.button}
           onPress={handleCreateClass}
@@ -72,22 +72,34 @@ const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     justifyContent: 'flex-start',
-    paddingTop: 64
-  },
-  header: {
-    minWidth: '100%',
-    width: 'auto',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     alignContent: 'center',
     alignItems: 'center',
+    paddingTop: 128
+  },
+  header: {
+    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    position: 'relative',
     top: 0,
-    left: 0
+  },
+  headerButton: {
+    flex: 1,
+    alignItems: 'flex-start',
+  },
+  logoContainer: {
+    flex: 2,
+    alignItems: 'flex-end',
   },
   icon: {
     color: '#ffffff',
     fontSize: 34,
+  },
+  iconGroup: {
+    color: '#00b37e',
+    marginRight: 8
   },
   title: {
     fontSize: 32,
@@ -101,7 +113,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   input: {
-    backgroundColor: '#333',
+    width: '100%',
+    backgroundColor: '#121214',
     color: '#ffffff',
     padding: 16,
     borderRadius: 8,

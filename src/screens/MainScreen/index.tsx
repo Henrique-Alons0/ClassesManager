@@ -45,7 +45,7 @@ export function MainScreen() {
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => handleClassPress(item)}>
             <View style={styles.card}>
-              <Icon style={styles.icon} name="group" size={30} color="#000" />
+              <Icon style={styles.icon} name="groups" size={30} color="#000" />
               <Text style={styles.cardTitle}>{item.title}</Text>
             </View>
           </TouchableOpacity>
