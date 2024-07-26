@@ -5,6 +5,7 @@ import ClassesContext from '../../context/ClassesContext';
 import { RootStackParamList } from '../../routes/app.routes';
 import { StackNavigationProp } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import styles from './style';
 
 type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MainScreen'>;
 
@@ -27,7 +28,6 @@ export function MainScreen() {
     navigation.navigate('ClassScreen', { classData: classItem });
   };
 
-  // Component for when the list is empty
   const renderEmptyComponent = () => (
     <View style={styles.emptyContainer}>
       <Text style={styles.emptyText}>Nenhuma turma.</Text>
@@ -52,90 +52,12 @@ export function MainScreen() {
         )}
         ListEmptyComponent={renderEmptyComponent}
       />
-      {/* <Button
-        title="Criar Turma"
-        color="#00875f"
-        onPress={() => navigation.navigate('CreateClassScreen')}
-      /> */}
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('CreateClassScreen')}
       >
-        <Text style={styles.buttonText}>Criar Turma</Text>
+        <Text style={styles.buttonText}>Criar nova turma</Text>
       </TouchableOpacity>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
-    fontFamily: 'Roboto'
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#51515a',
-    textAlign: 'center',
-    marginBottom: 16,
-  },
-  card: {
-    minWidth: "100%",
-    width: "auto",
-    backgroundColor: '#29292e',
-    borderRadius: 8,
-    padding: 16,
-    marginVertical: 8,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  icon: {
-    color: '#00b37e',
-    marginRight: 8
-  },
-  cardTitle: {
-    color: '#ffffff',
-  },
-  logo: {
-    margin: 32,
-    width: 60,
-    height: 60,
-  },
-  button: {
-    width: '100%',
-    backgroundColor: '#00875f',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    marginTop: 16,
-  },
-  buttonText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  emptyText: {
-    color: '#51515a',
-    fontSize: 16,
-  },
-});

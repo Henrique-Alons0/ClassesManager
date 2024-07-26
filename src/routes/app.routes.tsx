@@ -1,6 +1,6 @@
 // src/routes/AppRoutes.tsx
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { MainScreen } from '../screens/MainScreen';
 import { CreateClassScreen } from '../screens/CreateClassScreen';
 import { ClassScreen } from '../screens/ClassScreen';
@@ -15,7 +15,11 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 export function AppRoutes() {
   return (
-      <Stack.Navigator>
+      <Stack.Navigator
+          screenOptions={{
+            ...TransitionPresets.SlideFromRightIOS
+          }}
+        >
         <Stack.Screen 
             name="MainScreen" 
             component={MainScreen} 

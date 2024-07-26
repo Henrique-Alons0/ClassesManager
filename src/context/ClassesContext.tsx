@@ -9,6 +9,7 @@ interface Class {
 
 interface ClassesContextType {
   classes: Class[];
+  removeClass: (classId: string) => void;
   addClass: (newClass: Omit<Class, 'teamA' | 'teamB'>) => void;
   addParticipant: (classId: string, participant: string, team: 'teamA' | 'teamB') => void;
   setTeamAClass: (classId: string, team: string[]) => void;
@@ -23,6 +24,10 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
   const addClass = (newClass: Omit<Class, 'teamA' | 'teamB'>) => {
     setClasses((prevClasses) => [...prevClasses, { ...newClass, teamA: [], teamB: [] }]);
   };
+
+  const removeClass = (classId: string) =>{
+    setClasses(classes.filter(cls => cls.id !== classId));
+  }
 
   const addParticipant = (classId: string, participant: string, team: 'teamA' | 'teamB') => {
     setClasses((prevClasses) => {
@@ -67,7 +72,7 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <ClassesContext.Provider value={{ classes, addClass, addParticipant, setTeamAClass, setTeamBClass }}>
+    <ClassesContext.Provider value={{ classes, addClass, removeClass, addParticipant, setTeamAClass, setTeamBClass }}>
       {children}
     </ClassesContext.Provider>
   );
