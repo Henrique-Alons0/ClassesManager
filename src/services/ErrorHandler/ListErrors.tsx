@@ -1,4 +1,4 @@
-type ErrorKey = 'EMPTY_PARTICIPANT_NAME' | 'EMPTY_CLASS_NAME' | 'PARTICIPANT_ALREADY_EXISTS' | 'TEAM_RESOLUTION_ERROR' | 'CLASS_NOT_FOUND' | 'DELETION_ERROR';
+type ErrorKey = 'EMPTY_PARTICIPANT_NAME' | 'EMPTY_CLASS_NAME' | 'PARTICIPANT_ALREADY_EXISTS' | 'TEAM_RESOLUTION_ERROR' | 'CLASS_NOT_FOUND' | 'DELETION_ERROR' | 'UNEXPECTED_ERROR';
 
 const Errors: Record<ErrorKey, { code: string; message: string; messageUser: string }> = {
     EMPTY_PARTICIPANT_NAME: {
@@ -31,6 +31,11 @@ const Errors: Record<ErrorKey, { code: string; message: string; messageUser: str
         message: 'Houve um problema ao deletar a classe "{className}".',
         messageUser: 'There was a problem deleting the class "{className}".'
     },
+    UNEXPECTED_ERROR: {
+        code: 'UNEXPECTED_ERROR',
+        message: "Ocorreu um erro inesperado! Tente mais tarde.",
+        messageUser: "An unexpected error has occurred! Try later."
+    }
 };
 
 export default Errors;

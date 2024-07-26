@@ -3,9 +3,8 @@ import React, { useContext, useState } from 'react';
 import { View, Text, TextInput, useColorScheme, TouchableOpacity, FlatList, ViewStyle, Alert, Image } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../../routes/app.routes';
-import { StackNavigationProp } from '@react-navigation/stack';
 import ClassesContext from '../../context/ClassesContext';
-import { Errors, ErrorHandler } from '../../services/ErrorHandler/ErrorHandler';
+import { ErrorHandler } from '../../services/ErrorHandler/ErrorHandler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './style';
 
@@ -103,7 +102,7 @@ export function ClassScreen() {
           value={participantName}
           onChangeText={setParticipantName}
         />
-        <TouchableOpacity style={styles.addButton} onPress={addUser}>
+        <TouchableOpacity style={styles.addButton} testID="add-button" onPress={addUser}>
           <Icon name="add" size={24} color="#00b37e" />
         </TouchableOpacity>
       </View>
@@ -113,7 +112,7 @@ export function ClassScreen() {
             keyExtractor={(team) => team}
             renderItem={({ item }) => (
               <View style={[styles.teamButton, selectedTeam === item && styles.selectedTeamButton]}>
-                <TouchableOpacity onPress={() => handleTeamPress(item)}>
+                <TouchableOpacity testID={`set-team-${(item.split(" "))[1].toLocaleLowerCase()}-button`} onPress={() => handleTeamPress(item)}>
                   <Text style={styles.teamButtonText}>{item}</Text>
                 </TouchableOpacity>
               </View>
@@ -123,19 +122,20 @@ export function ClassScreen() {
           <Text style={styles.teamCount}>{selectedTeam == "TIME A" ? currentClass()?.teamA.length : currentClass()?.teamB.length}</Text>
         </View>
         <FlatList
-        data={selectedTeam === "TIME A" ? currentClass()?.teamA : currentClass()?.teamB}
-        keyExtractor={(item) => item}
-        renderItem={({ item }) => (
-          <View style={styles.userCard}>
-            <Text style={styles.userName}>{item}</Text>
-            <TouchableOpacity onPress={() => removeTeamParticipant(selectedTeam === "TIME A" ? 'A' : 'B', item)}>
-              <Icon style={styles.removeIcon} name="close" size={32} color="#fff" />
-            </TouchableOpacity>
-          </View>
-        )}
-      />
+          data={selectedTeam === "TIME A" ? currentClass()?.teamA : currentClass()?.teamB}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
+            <View style={styles.userCard}>
+              <Text style={styles.userName}>{item}</Text>
+              <TouchableOpacity testID={`remove-participant-button-${item.trim()}`} onPress={() => removeTeamParticipant(selectedTeam === "TIME A" ? 'A' : 'B', item)}>
+                <Icon style={styles.removeIcon} name="close" size={32} color="#fff" />
+              </TouchableOpacity>
+            </View>
+          )}
+        />
       <TouchableOpacity
         style={styles.buttonDelete}
+        testID="remove-button"
         onPress={() => {
           if([undefined, null, ''].includes(currentClass()?.id)) {
             ErrorHandler('DELETION_ERROR');

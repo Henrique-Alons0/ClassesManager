@@ -34,10 +34,10 @@ export function CreateClassScreen() {
   return (
     <View style={[styles.container, backgroundStyle]}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.headerButton} onPress={() => navigation.goBack()}>
+        <TouchableOpacity testID="go-back-button" style={styles.headerButton} onPress={() => navigation.goBack()}>
         <Icon style={styles.icon} name='arrow-back-ios' size={30} color="#fff"/>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.logoContainer} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.logoContainer}>
           <Image source={logoImage} style={styles.logo} />
         </TouchableOpacity>
         <Text style={styles.icon}></Text>
@@ -54,6 +54,7 @@ export function CreateClassScreen() {
           onChangeText={setClassName}
         />
         <TouchableOpacity
+          testID='create-class-button'
           style={styles.button}
           onPress={handleCreateClass}
         >
