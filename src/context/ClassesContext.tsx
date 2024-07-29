@@ -1,20 +1,5 @@
 import React, { createContext, useState, ReactNode } from 'react';
-
-interface Class {
-  id: string;
-  title: string;
-  teamA: string[];
-  teamB: string[];
-}
-
-interface ClassesContextType {
-  classes: Class[];
-  removeClass: (classId: string) => void;
-  addClass: (newClass: Omit<Class, 'teamA' | 'teamB'>) => void;
-  addParticipant: (classId: string, participant: string, team: 'teamA' | 'teamB') => void;
-  setTeamAClass: (classId: string, team: string[]) => void;
-  setTeamBClass: (classId: string, team: string[]) => void;
-}
+import { Class, ClassesContextType } from '../types/types';
 
 const ClassesContext = createContext<ClassesContextType | undefined>(undefined);
 
