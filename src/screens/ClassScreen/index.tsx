@@ -1,19 +1,19 @@
 import 'react-native-gesture-handler';
 import React, { useContext, useState } from 'react';
-import { View, Text, TextInput, useColorScheme, TouchableOpacity, FlatList, ViewStyle, Alert, Image } from 'react-native';
+import { View, Text, TextInput, useColorScheme, TouchableOpacity, FlatList, ViewStyle, KeyboardAvoidingView, Platform } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../../routes/app.routes';
-import ClassesContext from '../../context/ClassesContext';
+import ClassesContext from '../../context/ClassesContext/ClassesContext';
+import { Header } from '../../components/Header';
 import { ErrorHandler } from '../../services/ErrorHandler/ErrorHandler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './style';
+
 
 type ClassScreenRouteProp = RouteProp<RootStackParamList, 'ClassScreen'>;
 
 export function ClassScreen() {
   const teams = ["TIME A", "TIME B"];
-
-  const logoImage = require('../../assets/png/Logo.png');
   const context = useContext(ClassesContext);
   
   if (!context) {
@@ -82,30 +82,26 @@ export function ClassScreen() {
   };
 
   return (
-    <View style={[styles.container, backgroundStyle]}>
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.headerButton} onPress={() => navigation.goBack()}>
-          <Icon style={styles.icon} name='arrow-back-ios' size={30} color="#fff"/>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.logoContainer} onPress={() => navigation.goBack()}>
-          <Image source={logoImage} style={styles.logo} />
-        </TouchableOpacity>
-        <Text style={styles.icon}></Text>
-      </View>
+    <KeyboardAvoidingView
+      style={[styles.container, backgroundStyle]}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <Header />
       <View style={styles.content}>
         <Text style={styles.title}>{classData.title}</Text>
         <Text style={styles.subtitle}>Adicione a galera e separe os times</Text>
         <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Nome do Participante"
-          placeholderTextColor="#51515a"
-          value={participantName}
-          onChangeText={setParticipantName}
-        />
-        <TouchableOpacity style={styles.addButton} testID="add-button" onPress={addUser}>
-          <Icon name="add" size={24} color="#00b37e" />
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity style={styles.fullClickableArea} onPress={addUser} testID="add-button">
+            <TextInput
+              placeholder="Nome do Participante"
+              placeholderTextColor="#51515a"
+              value={participantName}
+              onChangeText={setParticipantName}
+              style={styles.textInput}
+            />
+            <Icon name="add" size={24} color="#00b37e" style={styles.addIcon} />
+          </TouchableOpacity>
+        </View>
         <View style={styles.teamsContainer}>
           <FlatList
             data={teams}
@@ -148,7 +144,8 @@ export function ClassScreen() {
         <Text style={styles.buttonText}>Remover turma</Text>
       </TouchableOpacity>
       </View>
-    </View>
+    {/* </View> */}
+    </KeyboardAvoidingView>
   );
 }
 

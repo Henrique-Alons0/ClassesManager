@@ -1,5 +1,5 @@
 import React, { createContext, useState, ReactNode } from 'react';
-import { Class, ClassesContextType } from '../types/types';
+import { Class, ClassesContextType } from '../../types/types';
 
 const ClassesContext = createContext<ClassesContextType | undefined>(undefined);
 

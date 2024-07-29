@@ -9,7 +9,7 @@ const Errors: Record<ErrorKey, { code: string; message: string; messageUser: str
     EMPTY_CLASS_NAME: {
         code: 'EMPTY_CLASS_NAME',
         message: "The class name cannot be empty!",
-        messageUser: 'O nome da classe não pode ficar vazio!'
+        messageUser: 'O nome da turma não pode ficar vazio!'
     },
     PARTICIPANT_ALREADY_EXISTS: {
         code: 'PARTICIPANT_ALREADY_EXISTS',

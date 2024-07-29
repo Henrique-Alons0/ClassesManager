@@ -4,7 +4,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Routes } from './src/routes';
 import ErrorBoundary from './src/services/ErrorBoundary/ErrorBoundary';
-import { ClassesProvider } from './src/context/ClassesContext';
+import { ClassesProvider } from './src/context/ClassesContext/ClassesContext';
 
 const Stack = createStackNavigator();
 
