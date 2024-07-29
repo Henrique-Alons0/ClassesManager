@@ -1,4 +1,3 @@
-// src/routes/AppRoutes.tsx
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { MainScreen } from '../screens/MainScreen';
@@ -10,6 +9,7 @@ export type RootStackParamList = {
   CreateClassScreen: undefined;
   ClassScreen: { classData: { id: string; title: string } };
 };
+
 
 const Stack = createStackNavigator<RootStackParamList>();
 

@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 16,
+    fontFamily: 'Roboto'
   },
   content: {
     display: 'flex',
@@ -16,27 +17,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 128
   },
-  header: {
-    width: "100%",
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    position: 'relative',
-    top: 0,
-  },
-  headerButton: {
-    flex: 1,
-    alignItems: 'flex-start',
-  },
-  logoContainer: {
-    flex: 2,
-    alignItems: 'flex-end',
-  },
-  icon: {
-    color: '#ffffff',
-    fontSize: 34,
-  },
   iconGroup: {
     color: '#00b37e',
     marginRight: 8
@@ -45,6 +25,8 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: '#ffffff',
     textAlign: 'center',
+    fontFamily: 'Roboto',
+    fontWeight: 'bold'
   },
   subtitle: {
     fontSize: 16,

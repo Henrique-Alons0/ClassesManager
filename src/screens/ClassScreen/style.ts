@@ -7,6 +7,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 16,
+    fontFamily: 'Roboto',
+    position: 'relative'
   },
   content: {
     display: 'flex',
@@ -16,31 +18,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 16
   },
-  header: {
-    width: "100%",
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    position: 'relative',
-    top: 0,
-  },
-  headerButton: {
-    flex: 1,
-    alignItems: 'flex-start',
-  },
-  logoContainer: {
-    flex: 2,
-    alignItems: 'flex-end',
-  },
-  icon: {
-    color: '#ffffff',
-    fontSize: 24,
-  },
   title: {
     fontSize: 32,
     color: '#ffffff',
     textAlign: 'center',
+    fontWeight: 'bold'
   },
   subtitle: {
     fontSize: 16,
@@ -141,7 +123,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
-    position: 'relative',
+    position: 'absolute',
     bottom: 0
   },
   buttonText: {
@@ -154,7 +136,18 @@ const styles = StyleSheet.create({
     width: 45,
     height: 50
   },
-  addButton: {
+    fullClickableArea: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    textInput: {
+      flex: 1,
+      color: '#ffffff',
+      paddingLeft: 16
+    },
+  addIcon: {
     padding: 16
   },
 });

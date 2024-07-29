@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Text, Button, StyleSheet, FlatList, useColorScheme, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import ClassesContext from '../../context/ClassesContext';
+import ClassesContext from '../../context/ClassesContext/ClassesContext';
 import { RootStackParamList } from '../../routes/app.routes';
 import { StackNavigationProp } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
