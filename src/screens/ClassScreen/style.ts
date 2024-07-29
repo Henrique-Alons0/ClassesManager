@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -102,10 +102,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     borderRadius: 8,
     elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    ...(Platform.OS === 'web' ? {
+      boxShadow: '0px 2px 3px rgba(0, 0, 0, 0.2)',
+    } : {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+    }),
     marginTop: 16,
     marginBottom: 32,
   },
@@ -119,10 +123,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     borderRadius: 8,
     elevation: 3,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    ...(Platform.OS === 'web' ? {
+      boxShadow: '0px 2px 3px rgba(0, 0, 0, 0.2)',
+    } : {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+    }),
     position: 'absolute',
     bottom: 0
   },

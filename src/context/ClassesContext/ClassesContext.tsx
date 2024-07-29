@@ -10,9 +10,9 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
     setClasses((prevClasses) => [...prevClasses, { ...newClass, teamA: [], teamB: [] }]);
   };
 
-  const removeClass = (classId: string) =>{
-    setClasses(classes.filter(cls => cls.id !== classId));
-  }
+  const removeClass = (classId: string) => {
+    setClasses((prevClasses) => prevClasses.filter(cls => cls.id !== classId));
+  };
 
   const addParticipant = (classId: string, participant: string, team: 'teamA' | 'teamB') => {
     setClasses((prevClasses) => {
@@ -40,7 +40,7 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
         return cls;
       });
     });
-  }
+  };
 
   const setTeamBClass = (classId: string, team: string[]) => {
     setClasses((prevClasses) => {
@@ -54,7 +54,7 @@ export function ClassesProvider({ children }: { children: ReactNode }) {
         return cls;
       });
     });
-  }
+  };
 
   return (
     <ClassesContext.Provider value={{ classes, addClass, removeClass, addParticipant, setTeamAClass, setTeamBClass }}>

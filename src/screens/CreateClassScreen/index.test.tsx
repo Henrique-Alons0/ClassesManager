@@ -1,9 +1,10 @@
 import React from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react-native';
 import { CreateClassScreen } from './index';
-import ClassesContext from '../../context/ClassesContext';
+import ClassesContext from '../../context/ClassesContext/ClassesContext';
 import { ErrorHandler } from '../../services/ErrorHandler/ErrorHandler';
 import { useNavigation } from '@react-navigation/native';
+import ErrorBoundary from '../../services/ErrorBoundary/ErrorBoundary';
 
 jest.mock('../../services/ErrorHandler/ErrorHandler', () => ({
   ErrorHandler: jest.fn()
@@ -48,9 +49,11 @@ describe('CreateClassScreen', () => {
 
   it('should render the component', () => {
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <CreateClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <CreateClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     expect(screen.getByText('Nova Turma')).toBeTruthy();
@@ -60,9 +63,11 @@ describe('CreateClassScreen', () => {
 
   it('should handle creating a class', async () => {
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <CreateClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <CreateClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     fireEvent.changeText(screen.getByPlaceholderText('Nome da Turma'), 'New Class');
@@ -77,9 +82,11 @@ describe('CreateClassScreen', () => {
 
   it('should show error if class name is empty', async () => {
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <CreateClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <CreateClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     fireEvent.press(screen.getByText('Criar'));
@@ -94,9 +101,11 @@ describe('CreateClassScreen', () => {
     (useNavigation as jest.Mock).mockReturnValue({ goBack: mockGoBack });
 
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <CreateClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <CreateClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     fireEvent.changeText(screen.getByPlaceholderText('Nome da Turma'), 'John Doe Club');
@@ -110,9 +119,11 @@ describe('CreateClassScreen', () => {
     (useNavigation as jest.Mock).mockReturnValue({ goBack: mockGoBack });
 
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <CreateClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <CreateClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     fireEvent.press(screen.getByTestId('go-back-button'));

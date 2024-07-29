@@ -1,3 +1,4 @@
+import { formatDate } from '../AuxService/AuxService';
 import { ErrorHandler, Errors } from './ErrorHandler';
 import { Alert } from 'react-native';
 
@@ -20,8 +21,8 @@ describe('ErrorHandler', () => {
 
     ErrorHandler(errorKey);
 
-    expect(mockError).toHaveBeenCalledWith(Errors[errorKey].message);
-    expect(Alert.alert).toHaveBeenCalledWith('Error', Errors[errorKey].messageUser);
+    expect(mockError).toHaveBeenCalledWith(`[Erro_${formatDate(new Date())}]: ${Errors[errorKey].message}.`);
+    expect(Alert.alert).toHaveBeenCalledWith(`Erro (${errorKey})`, Errors[errorKey].messageUser);
   });
 
   it('should replace variables in the error message correctly', () => {
@@ -31,11 +32,11 @@ describe('ErrorHandler', () => {
     ErrorHandler(errorKey, variables);
 
 
-    const expectedMessage = `Participant \"${variables.participantName}\" already exists in team \"${variables.teamName}\"!`;
+    const expectedMessage = `Participant \"${variables.participantName}\" already exists in team \"${variables.teamName}\"!.`;
     const expectedMessageUser = Errors[errorKey].messageUser.replace('{participantName}', variables.participantName).replace('{teamName}', variables.teamName);
 
-    expect(mockError).toHaveBeenCalledWith(expectedMessage);
-    expect(Alert.alert).toHaveBeenCalledWith('Error', expectedMessageUser);
+    expect(mockError).toHaveBeenCalledWith(`[Erro_${formatDate(new Date())}]: ${expectedMessage}`);
+    expect(Alert.alert).toHaveBeenCalledWith(`Erro (${errorKey})`, expectedMessageUser);
   });
 
   it('should handle missing variables gracefully', () => {
@@ -43,8 +44,8 @@ describe('ErrorHandler', () => {
 
     ErrorHandler(errorKey, {});
 
-    expect(mockError).toHaveBeenCalledWith(Errors.UNEXPECTED_ERROR.message);
-    expect(Alert.alert).toHaveBeenCalledWith('Error', Errors.UNEXPECTED_ERROR.messageUser);
+    expect(mockError).toHaveBeenCalledWith(`[Erro_${formatDate(new Date())}]: ${Errors.UNEXPECTED_ERROR.message}.`);
+    expect(Alert.alert).toHaveBeenCalledWith(`Erro (${errorKey})`, Errors.UNEXPECTED_ERROR.messageUser);
   });
 
   it('should handle empty error key gracefully', () => {
@@ -54,8 +55,8 @@ describe('ErrorHandler', () => {
 
     ErrorHandler(invalidKey, {});
 
-    expect(mockError).toHaveBeenCalledWith(Errors.UNEXPECTED_ERROR.message);
-    expect(Alert.alert).toHaveBeenCalledWith('Error', Errors.UNEXPECTED_ERROR.messageUser);
+    expect(mockError).toHaveBeenCalledWith(`[Erro_${formatDate(new Date())}]: ${Errors.UNEXPECTED_ERROR.message}.`);
+    expect(Alert.alert).toHaveBeenCalledWith(`Erro (${invalidKey})`, Errors.UNEXPECTED_ERROR.messageUser);
   });
 
   it('should handle variable replacement when no matching keys are found', () => {
@@ -67,7 +68,7 @@ describe('ErrorHandler', () => {
     const expectedMessage = Errors[errorKey].message;
     const expectedMessageUser = Errors[errorKey].messageUser;
 
-    expect(mockError).toHaveBeenCalledWith(expectedMessage);
-    expect(Alert.alert).toHaveBeenCalledWith('Error', expectedMessageUser);
+    expect(mockError).toHaveBeenCalledWith(`[Erro_${formatDate(new Date())}]: ${expectedMessage}.`);
+    expect(Alert.alert).toHaveBeenCalledWith(`Erro (${errorKey})`, expectedMessageUser);
   });
 });

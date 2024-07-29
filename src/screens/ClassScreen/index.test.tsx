@@ -1,9 +1,10 @@
 import React from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react-native';
 import { ClassScreen } from './index';
-import ClassesContext from '../../context/ClassesContext';
+import ClassesContext from '../../context/ClassesContext/ClassesContext';
 import { ErrorHandler } from '../../services/ErrorHandler/ErrorHandler';
 import { useRoute } from '@react-navigation/native';
+import ErrorBoundary from '../../services/ErrorBoundary/ErrorBoundary';
 
 jest.mock('../../services/ErrorHandler/ErrorHandler', () => ({
   ErrorHandler: jest.fn()
@@ -49,9 +50,11 @@ describe('ClassScreen', () => {
 
  it('should render the component', () => {
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <ClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <ClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     expect(screen.getByText('Class 1')).toBeTruthy();
@@ -61,9 +64,11 @@ describe('ClassScreen', () => {
 
   it('should handle adding a participant', async () => {
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <ClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <ClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     fireEvent.changeText(screen.getByPlaceholderText('Nome do Participante'), 'John Doe');
@@ -76,9 +81,11 @@ describe('ClassScreen', () => {
 
   it('should show error when participant already exists', async () => {
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <ClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <ClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     fireEvent.changeText(screen.getByPlaceholderText('Nome do Participante'), 'John Doe');
@@ -97,9 +104,11 @@ describe('ClassScreen', () => {
 
   it('should handle removing a participant', async () => {
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <ClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <ClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     fireEvent.press(screen.getByTestId('remove-participant-button-John'));
@@ -115,9 +124,11 @@ describe('ClassScreen', () => {
 
   it('should handle deletion of class', async () => {
     render(
-      <ClassesContext.Provider value={mockContext}>
-        <ClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={mockContext}>
+          <ClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     fireEvent.press(screen.getByText('Remover turma'));
@@ -133,9 +144,11 @@ describe('ClassScreen', () => {
     const invalidContext = { ...mockContext, classes: [{ id: '', title: 'Invalid Class', teamA: [], teamB: [] }] };
 
     render(
-      <ClassesContext.Provider value={invalidContext}>
-        <ClassScreen />
-      </ClassesContext.Provider>
+      <ErrorBoundary>
+        <ClassesContext.Provider value={invalidContext}>
+          <ClassScreen />
+        </ClassesContext.Provider>
+      </ErrorBoundary>
     );
 
     fireEvent.press(screen.getByText('Remover turma'));
