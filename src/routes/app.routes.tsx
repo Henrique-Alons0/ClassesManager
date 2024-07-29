@@ -1,4 +1,3 @@
-// src/routes/AppRoutes.tsx
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { MainScreen } from '../screens/MainScreen';
