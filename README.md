@@ -1,79 +1,82 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# ClassesManager
 
-# Getting Started
+ClassesManager é um aplicativo React Native para gerenciar turmas, onde os usuários podem criar, visualizar e gerenciar participantes em diferentes turmas.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Índice
 
-## Step 1: Start the Metro Server
+- [Visão Geral](#visão-geral)
+- [Funcionalidades](#funcionalidades)
+- [Instalação](#instalação)
+- [Uso](#rodando-o-aplicativo)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Testes](#testes)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Licença](#licença)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Visão Geral
 
-To start Metro, run the following command from the _root_ of your React Native project:
+O ClassesManager permite aos usuários:
+- Criar novas turmas.
+- Adicionar e remover participantes das turmas.
+- Separar participantes em dois times (A e B).
 
-```bash
-# using npm
-npm start
+## Funcionalidades
 
-# OR using Yarn
-yarn start
-```
+- **Criar Turma:** Crie novas turmas e adicione participantes.
+- **Gerenciamento de Participantes:** Adicione ou remova participantes de uma turma.
+- **Divisão em Times:** Separe os participantes em dois times distintos.
 
-## Step 2: Start your Application
+## Instalação
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### Pré-requisitos
 
-### For Android
+- Node.js
+- React Native CLI
+- Android Studio ou Xcode (para rodar em dispositivos/emuladores)
 
-```bash
-# using npm
-npm run android
+### Passos
 
-# OR using Yarn
-yarn android
-```
+1. Clone o repositório:
 
-### For iOS
+   ```bash
+      git clone https://github.com/seu-usuario/ClassesManager.git
+      cd ClassesManager
+   ```
 
-```bash
-# using npm
-npm run ios
+2. Instale as dependências:
 
-# OR using Yarn
-yarn ios
-```
+   ```bash
+      npm install
+   ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## Rodando o Aplicativo
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+   ```bash
+      npx react-native run-android
+   ```
 
-## Step 3: Modifying your App
+## Testes
 
-Now that you have successfully run the app, let's modify it.
+Para rodar os testes, use o comando:
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+   ```bash
+      npm run test
+   ```
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Para gerar um relatorio de cobertura de testes:
 
-## Congratulations! :tada:
+   ```bash
+      npm run test:coverage
+   ```
 
-You've successfully run and modified your React Native App. :partying_face:
+## Tecnologias Utilizadas
 
-### Now what?
+   -  React Native: Framework para construir aplicativos móveis.
+   -  TypeScript: Superset do JavaScript que adiciona tipagem estática.
+   -  Jest: Framework de testes para JavaScript.
+   -  React Navigation: Biblioteca de navegação para React Native.
+   -  React Context API: Gerenciamento de estado.
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+## Licença
 
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Este projeto está licenciado sob a MIT License.

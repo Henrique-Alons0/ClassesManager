@@ -11,6 +11,7 @@ export type RootStackParamList = {
   ClassScreen: { classData: { id: string; title: string } };
 };
 
+
 const Stack = createStackNavigator<RootStackParamList>();
 
 export function AppRoutes() {

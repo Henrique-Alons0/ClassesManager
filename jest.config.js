@@ -1,3 +1,6 @@
+module.exports = {
+  preset: 'react-native',
+};
 // module.exports = {
 //   preset: 'react-native',
 //   transform: {
@@ -25,6 +28,3 @@
 //   coverageDirectory: "coverage",
 //   coverageReporters: ["json", "html", "text"],
 // };
-module.exports = {
-  preset: 'react-native',
-};
