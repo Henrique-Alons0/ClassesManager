@@ -47,6 +47,7 @@ describe('MainScreen', () => {
   });
 
   it('should render the component', () => {
+    console.log('Rendering MainScreen...');
     render(
       <ErrorBoundary>
         <ClassesContext.Provider value={mockContext}>
@@ -92,6 +93,7 @@ describe('MainScreen', () => {
       </ErrorBoundary>
     );
 
+    console.log('Rendering button press test...');
     fireEvent.press(screen.getByText('Criar nova turma'));
 
     expect(mockNavigate).toHaveBeenCalledWith('CreateClassScreen');
@@ -108,6 +110,6 @@ describe('MainScreen', () => {
       </ErrorBoundary>
     );
 
-    expect(screen.getByText('Nenhuma turma.')).toBeTruthy();
+    expect(screen.getByTestId('emptyClasses')).toBeTruthy();
   });
 });

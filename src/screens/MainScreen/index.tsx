@@ -30,7 +30,7 @@ export function MainScreen() {
 
   const renderEmptyComponent = () => (
     <View style={styles.emptyContainer}>
-      <Text style={styles.emptyText}>Nenhuma turma.</Text>
+      <Text testID='emptyClasses' style={styles.emptyText}>Nenhuma turma.</Text>
     </View>
   );
 
@@ -43,7 +43,7 @@ export function MainScreen() {
         data={classes}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => handleClassPress(item)}>
+          <TouchableOpacity testID={`class_${item.id}`} onPress={() => handleClassPress(item)}>
             <View style={styles.card}>
               <Icon style={styles.icon} name="groups" size={30} color="#000" />
               <Text style={styles.cardTitle}>{item.title}</Text>
