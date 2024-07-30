@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface Class {
     id: string;
     title: string;
@@ -12,4 +14,12 @@ export interface ClassesContextType {
     addParticipant: (classId: string, participant: string, team: 'teamA' | 'teamB') => void;
     setTeamAClass: (classId: string, team: string[]) => void;
     setTeamBClass: (classId: string, team: string[]) => void;
+}
+
+export interface ErrorBoundaryProps {
+  children: ReactNode;
+}
+
+export interface ErrorBoundaryState {
+  hasError: boolean;
 }

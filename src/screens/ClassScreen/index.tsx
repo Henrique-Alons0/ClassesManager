@@ -144,7 +144,6 @@ export function ClassScreen() {
         <Text style={styles.buttonText}>Remover turma</Text>
       </TouchableOpacity>
       </View>
-    {/* </View> */}
     </KeyboardAvoidingView>
   );
 }
